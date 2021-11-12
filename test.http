@@ -1,0 +1,95 @@
+@host = http://localhost:3000
+
+@auth = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbmdlbHZhbGxlZ0BnbWFpbC5jb20iLCJpYXQiOjE2MjAzMzc0OTEsImV4cCI6MTYyMDMzODY5MX0.Q8kaGWrJ87wTHap7Dc7BS1kw2VODWF7yGiTnQ2Yr328
+
+###
+POST  {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "mangelvalleg@gmail.com",
+    "code": "%$k$kw#I*RbL"
+}
+
+### GUEST SECTION
+GET {{host}}/api/guest
+x-auth: {{auth}}
+
+###
+GET {{host}}/api/guest/kJenner@gmail.com
+
+###
+POST {{host}}/api/guest
+Content-Type: application/json
+
+{
+    "firstName": "Kendall",
+    "lastName": "Jenner",
+    "email": "kJenner@gmail.com",
+    "companions": 1,
+    "phone": 8184381325,
+    "relationship": "Related to the groom",
+    "photo": "https://www.gotceleb.com/wp-content/uploads/photos/kendall-jenner/girls-of-the-sun-premiere-at-2018-cannes-film-festival/Kendall-Jenner:-Girls-Of-The-Sun-Premiere-at-2018-Cannes-Film-Festival--05.jpg",
+    "sex": "Women",
+    "instagram": "https://www.instagram.com/kendalljenner/?hl=es",
+    "facebook": "https://www.facebook.com/KendallJenner",
+    "assistance": "Pending",
+    "role": "ADMIN",
+    "code": "N2@L!JGAQIfm"
+}
+
+###
+PUT {{host}}/api/guest/kJenner@gmail.com
+Content-Type: application/json
+
+{
+    "firstName": "Kendall",
+    "lastName": "Jenner",
+    "email": "kJenner@gmail.com",
+    "companions": 1,
+    "phone": 8184381325,
+    "relationship": "Related to the groom",
+    "photo": "https://akns-images.eonline.com/eol_images/Entire_Site/20181016/rs_634x1024-181116035826-634-Kendall-Jenner-London-Event-LT-111618-GettyImages-1061995128.jpg?fit=around%7C634:1024&output-quality=90&crop=634:1024;center,top",
+    "sex": "Women",
+    "instagram": "https://www.instagram.com/kendalljenner/?hl=es",
+    "facebook": "https://www.facebook.com/KendallJenner",
+    "assistance": "Will attend"
+}
+
+###
+DELETE {{host}}/api/guest/kJenner@gmail.com
+
+### GIFT SECTION
+GET {{host}}/api/gift
+
+###
+GET {{host}}/api/gift/Mini Pro Camera 12k
+
+###
+POST {{host}}/api/gift
+Content-Type: application/json
+
+{
+    "name": "Network Streamer",
+    "price": 101272.02,
+    "category": "Livingroom",
+    "status":"Available",
+    "buyer":"None",
+    "link": "https://www.amazon.com/Naim-Uniti-Network-Streamer-Amplifier/dp/B07S3LNV34/ref=sr_1_1?dchild=1&qid=1620687096&rnid=16225009011&s=electronics&sr=1-1",
+    "photo": "https://images-na.ssl-images-amazon.com/images/I/51iqG3DbWkL._AC_SL1000_.jpg"
+}
+
+###
+PUT {{host}}/api/gift/Cuisinart SS-15P1
+Content-Type: application/json
+
+{
+    "name": "Cuisinart SS-15P1",
+    "price": 5078.39,
+    "category": "Kitchen",
+    "link": "https://www.amazon.com/dp/B01KIG4YNO?colid=2KWL57MX4IH3W&coliid=I3MWEXRKQBR7MH&ref_=wr_ov_pt",
+    "photo": "gifts-images/Cuisinart SS-15P1.PNG"
+}
+
+###
+DELETE {{host}}/api/gift/Cuisinart SS-15P1
