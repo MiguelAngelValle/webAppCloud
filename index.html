@@ -77,19 +77,26 @@
 					  <div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
-								<input type="email" class="form-control" id="guestEmail" name="name" placeholder="Your Email" required data-error="Please enter your code">
+								<input type="text" class="form-control" id="username" name="username" placeholder="Username" required data-error="Please enter your username">
 								<div class="help-block with-errors"></div>
 							</div>                                 
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<input type="password" class="form-control" id="guestCode" name="name" placeholder="Guest Code" required data-error="Please enter your code">
+								<input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required data-error="Please enter your email">
+								<div class="help-block with-errors"></div>
+							</div>                                 
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password" required data-error="Please enter your password">
 								<div class="help-block with-errors"></div>
 							</div>                                 
 						</div>
 						<div class="col-md-12">
 							<div class="submit-button text-center">
-								<button class="btn btn-common" id="loginSubmit" type="submit">Log in</button>
+								<input type="submit" id="sighUp" value="Login">
+								<!--button class="btn btn-common" id="sighUp" type="submit">Log in</!--button-->
 								<div id="msgSubmit" class="h3 text-center hidden"></div> 
 								<div class="clearfix"></div> 
 							</div>
@@ -117,6 +124,48 @@
 	<!-- End Footer -->
 
 	<!-- ALL JS FILES -->
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+		import { getDatabase } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js";
+		import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+	  
+		// Your web app's Firebase configuration
+		const firebaseConfig = {
+		  apiKey: "AIzaSyCwFPpIQJp1Bbol6CwKg4B8STIH-K2SR7c",
+		  authDomain: "cloud-auth-96fea.firebaseapp.com",
+		  databaseURL: "https://cloud-auth-96fea-default-rtdb.firebaseio.com",
+		  projectId: "cloud-auth-96fea",
+		  storageBucket: "cloud-auth-96fea.appspot.com",
+		  messagingSenderId: "594477015510",
+		  appId: "1:594477015510:web:12d84aa94af638f3d54477"
+		};
+	  
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const database = getDatabase(app);
+		const auth = getAuth();
+		sighUp.addEventListener('click', (e) => {
+			var email = document.getElementById('email').value;
+			var password = document.getElementById('password').value;
+			var username = document.getElementById('username').value;
+			createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+	alert('User created!');
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+	alert(errorMessage);
+    // ..
+  });
+		})
+	  </script>
 	<!--script src="js/index.js"></script-->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/popper.min.js"></script>
