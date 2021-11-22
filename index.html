@@ -161,6 +161,10 @@
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+	set(ref(database, 'users/' + user.uid), {
+		username: username,
+		email: email
+	})
 	//alert(errorMessage);
 	window.location.href = "home.html";
     // ..
